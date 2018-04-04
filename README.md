@@ -1,1 +1,1 @@
-# Wycena samochodów
+# Wycena domów/mieszkań
