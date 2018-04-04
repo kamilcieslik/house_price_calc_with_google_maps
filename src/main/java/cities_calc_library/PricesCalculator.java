@@ -100,6 +100,29 @@ public class PricesCalculator {
 
     }
 
+    public Double calculateMultiplierForConstructionYear(Integer constructionYear) throws ConstructionYearViolationException {
+        Calendar calendarDateNow = Calendar.getInstance();
+        int dateNowYear = calendarDateNow.get(Calendar.YEAR);
+        if (constructionYear > dateNowYear) {
+            Throwable exceptionCause;
+            exceptionCause = new Throwable("rok budowy nie może być większy niż obecny.");
+            throw new ConstructionYearViolationException("Błąd roku budowy", exceptionCause);
+        }
+
+        if (constructionYear < 1900) {
+            Throwable exceptionCause;
+            exceptionCause = new Throwable("rok budowy nie może być mniejszy niż 1900.");
+            throw new ConstructionYearViolationException("Błąd roku budowy", exceptionCause);
+        }
+
+        if (constructionYear == dateNowYear)
+            return 1.20;
+        else if (constructionYear < dateNowYear - 40)
+            return 0.80;
+        else
+            return 1.20 - ((dateNowYear - constructionYear) / 100.0);
+    }
+
     private void initReferenceCities() {
         if (referenceCitiesMap == null)
             referenceCitiesMap = new ArrayList<>();
