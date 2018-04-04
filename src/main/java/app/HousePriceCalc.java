@@ -2,6 +2,7 @@ package app;
 
 import house_calc_library.PricesCalculator;
 import javafx.application.Application;
+import javafx.controller.WelcomeBannerController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
