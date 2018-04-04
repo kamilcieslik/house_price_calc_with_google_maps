@@ -117,7 +117,7 @@
                                           <Insets top="18.0" />
                                        </HBox.margin>
                                        <children>
-                                          <ComboBox fx:id="comboBoxAddress" prefHeight="26.0" prefWidth="528.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;" />
+                                          <ComboBox fx:id="comboBoxAddress" onAction="#comboBoxAddress_onAction" prefHeight="26.0" prefWidth="528.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;" />
                                           <Label fx:id="labelAddress" text="Wybierz adres." textFill="#0083f9" />
                                        </children>
                                     </VBox>

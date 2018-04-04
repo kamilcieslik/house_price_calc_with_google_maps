@@ -4,26 +4,26 @@ import app.HousePriceCalc;
 import house_calc_library.additional_classes.Address;
 import house_calc_library.exception.ConstructionYearViolationException;
 import com.google.maps.errors.ApiException;
+import javafx.CustomMessageBox;
 import javafx.ListenerMethods;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     private WebEngine webEngineMap;
-    private ObservableList<Address> addressesObservableList;
+    private ObservableList<Address> addressesObservableList = FXCollections.observableArrayList();
+    private CustomMessageBox customMessageBox;
 
     @FXML
     private Label labelEnterYourData, labelAddress, labelPropertyType, labelMarketType, labelConstructionYear,
@@ -49,6 +49,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        customMessageBox = new CustomMessageBox("image/icon.png");
         webEngineMap = webViewGoogleMaps.getEngine();
         String url = HousePriceCalc.class.getResource("../map.html").toExternalForm();
         webEngineMap.load(url);
@@ -114,8 +115,31 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void buttonAutocompleteAddresses(){
+    void buttonAutocompleteAddresses() {
+        try {
+            addressesObservableList.clear();
+            HousePriceCalc.pricesCalculator.autocompleteAddresses(textFieldAddress.getText());
+            List<Address> autocompleteAddresses = HousePriceCalc.pricesCalculator.getAutocompleteAddresses();
+            if (autocompleteAddresses != null)
+                addressesObservableList.addAll(autocompleteAddresses);
+        } catch (InterruptedException | ApiException | IOException e) {
+            if (e.getCause() != null)
+                customMessageBox.showMessageBox(Alert.AlertType.WARNING, "Ostrzeżenie",
+                        "Operacja typowania adresów nie powiodła się.",
+                        "Powód: " + e.getCause().getMessage() + ".")
+                        .showAndWait();
+            else
+                customMessageBox.showMessageBox(Alert.AlertType.WARNING, "Ostrzeżenie",
+                        "Operacja typowania adresów nie powiodła się.",
+                        "Powód: " + e.getMessage() + ".")
+                        .showAndWait();
+        }
+    }
 
+    @FXML
+    void comboBoxAddress_onAction() {
+        if (comboBoxAddress.getSelectionModel().getSelectedItem() != null)
+            HousePriceCalc.pricesCalculator.setSelectedAddress(comboBoxAddress.getSelectionModel().getSelectedItem());
     }
 
     @FXML
