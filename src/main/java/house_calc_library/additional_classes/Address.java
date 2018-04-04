@@ -1,4 +1,4 @@
-package cities_calc_library.additional_classes;
+package house_calc_library.additional_classes;
 
 public class Address {
     private String streetNumber, route, city, country, province, postalCode;

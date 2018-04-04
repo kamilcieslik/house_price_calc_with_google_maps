@@ -1,4 +1,4 @@
-package cities_calc_library.additional_classes;
+package house_calc_library.additional_classes;
 
 public class ReferenceCity {
     private String name;

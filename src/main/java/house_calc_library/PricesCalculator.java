@@ -1,8 +1,8 @@
-package cities_calc_library;
+package house_calc_library;
 
-import cities_calc_library.additional_classes.Address;
-import cities_calc_library.additional_classes.ReferenceCity;
-import cities_calc_library.exception.ConstructionYearViolationException;
+import house_calc_library.additional_classes.Address;
+import house_calc_library.additional_classes.ReferenceCity;
+import house_calc_library.exception.ConstructionYearViolationException;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.errors.ApiException;
@@ -96,8 +96,13 @@ public class PricesCalculator {
         }
     }
 
-    public void calculateTheNearestReferenceCity() {
+    public Double calculateHousePrice(){
+        // TODO:
+        return null;
+    }
 
+    public void calculateTheNearestReferenceCity() {
+        // TODO: Calculate distances between flat address and reference cities.
     }
 
     public Double calculateMultiplierForConstructionYear(Integer constructionYear) throws ConstructionYearViolationException {

@@ -1,4 +1,4 @@
-package cities_calc_library.exception;
+package house_calc_library.exception;
 
 /**
  * <p>ConstructionYearViolationException class.</p>
