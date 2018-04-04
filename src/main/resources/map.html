@@ -30,26 +30,31 @@
 </object>
 
 <script type="text/javascript">
-    var yourFlatLat = 52.237049;
-    var yourFlatLng = 21.017532;
-    var referenceCityLat = 53.237049;
-    var referenceCityLng = 21.017532;
-    var clearComponents = false;
+    var initLat = 52.237049;
+    var initLng = 21.017532;
+    var yourFlatLat;
+    var yourFlatLng;
+    var referenceCityLat;
+    var referenceCityLng;
+    var drawFlatMarker = false;
+    var drawReferenceCity = false;
 
     function sayHello() {
         return 'Siema ';
     }
 
     function initMap() {
+        var initCoordinates = {lat: initLat, lng: initLng};
         var yourFlatCoordinates = {lat: yourFlatLat, lng: yourFlatLng};
         var referenceCityCoordinates = {lat: referenceCityLat, lng: referenceCityLng};
 
-        map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: yourFlatCoordinates
-        });
 
-        if (clearComponents !== true) {
+        if (drawFlatMarker === true) {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: yourFlatCoordinates
+            });
+
             var yourFlatMarker = new google.maps.Marker({
                 position: yourFlatCoordinates,
                 map: map,
@@ -63,8 +68,8 @@
                     text: 'TWOJE MIESZKANIE',
                     color: 'white',
                     fontSize: "14px",
-                    fontWeight: 'bold',
-                },
+                    fontWeight: 'bold'
+                }
             });
 
             var yourFlatInfoWindow = new google.maps.InfoWindow({
@@ -75,23 +80,31 @@
                 yourFlatInfoWindow.open(map, yourFlatMarker);
             });
 
-            var referenceCityMarker = new google.maps.Marker({
-                position: referenceCityCoordinates,
-                map: map,
-                icon: {
-                    url: 'image/reference_city_marker.png',
-                    scaledSize: new google.maps.Size(75, 75), // scaled size
-                    origin: new google.maps.Point(0, 0), // origin
-                    anchor: new google.maps.Point(0, 0) // anchor
-                }
-            });
+            if (drawReferenceCity === true) {
+                var referenceCityMarker = new google.maps.Marker({
+                    position: referenceCityCoordinates,
+                    map: map,
+                    icon: {
+                        url: 'image/reference_city_marker.png',
+                        scaledSize: new google.maps.Size(75, 75), // scaled size
+                        origin: new google.maps.Point(0, 0), // origin
+                        anchor: new google.maps.Point(0, 0) // anchor
+                    }
+                });
 
-            var referenceCityInfoWindow = new google.maps.InfoWindow({
-                content: '<h3>Miasto odniesienia</h3>'
-            });
+                var referenceCityInfoWindow = new google.maps.InfoWindow({
+                    content: '<h3>Miasto odniesienia</h3>'
+                });
 
-            yourFlatMarker.addListener('click', function () {
-                referenceCityInfoWindow.open(map, referenceCityMarker);
+                yourFlatMarker.addListener('click', function () {
+                    referenceCityInfoWindow.open(map, referenceCityMarker);
+                });
+            }
+        }
+        else {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: initCoordinates
             });
         }
     }

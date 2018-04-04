@@ -101,7 +101,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void buttonCalculate() throws InterruptedException, ApiException, IOException, ConstructionYearViolationException {
+    void buttonCalculate() {
         /*
         webEngineMap.executeScript("clearComponents=true;");
         webEngineMap.executeScript("initMap();");
@@ -111,7 +111,23 @@ public class MainController implements Initializable {
         HousePriceCalc.pricesCalculator.autocompleteAddresses(textFieldAddress.getText());
         System.out.println(HousePriceCalc.pricesCalculator.getAutocompleteAddresses()); */
 
-        System.out.println(HousePriceCalc.pricesCalculator.calculateMultiplierForConstructionYear(Integer.valueOf(textFieldAddress.getText())));
+        if (labelAddress.getText().isEmpty() && labelBuildingType.getText().isEmpty()
+                && labelMarketType.getText().isEmpty() && labelConstructionYear.getText().isEmpty() &&
+                labelNumberOfMeters.getText().isEmpty() && labelBuildingMaterial.getText().isEmpty()) {
+
+            try {
+                HousePriceCalc.pricesCalculator.calculateMultiplierForConstructionYear(Integer.valueOf(textFieldConstructionYear.getText()));
+            } catch (ConstructionYearViolationException e) {
+                customMessageBox.showMessageBox(Alert.AlertType.WARNING, "Ostrzeżenie",
+                        "Operacja oszacowania wartości nie powiedzie się.",
+                        "Powód: " + e.getCause().getMessage())
+                        .showAndWait();
+            }
+        } else
+            customMessageBox.showMessageBox(Alert.AlertType.WARNING, "Ostrzeżenie",
+                    "Operacja oszacowania wartości nie powiedzie się.",
+                    "Powód: Nie wszystkie wartości mają poprawny format.")
+                    .showAndWait();
     }
 
     @FXML
@@ -120,8 +136,12 @@ public class MainController implements Initializable {
             addressesObservableList.clear();
             HousePriceCalc.pricesCalculator.autocompleteAddresses(textFieldAddress.getText());
             List<Address> autocompleteAddresses = HousePriceCalc.pricesCalculator.getAutocompleteAddresses();
-            if (autocompleteAddresses != null)
+            if (autocompleteAddresses != null) {
                 addressesObservableList.addAll(autocompleteAddresses);
+                webEngineMap.executeScript("drawFlatMarker=false;");
+                webEngineMap.executeScript("drawReferenceCity=false;");
+            }
+
         } catch (InterruptedException | ApiException | IOException e) {
             if (e.getCause() != null)
                 customMessageBox.showMessageBox(Alert.AlertType.WARNING, "Ostrzeżenie",
@@ -138,8 +158,15 @@ public class MainController implements Initializable {
 
     @FXML
     void comboBoxAddress_onAction() {
-        if (comboBoxAddress.getSelectionModel().getSelectedItem() != null)
+        if (comboBoxAddress.getSelectionModel().getSelectedItem() != null) {
             HousePriceCalc.pricesCalculator.setSelectedAddress(comboBoxAddress.getSelectionModel().getSelectedItem());
+
+            webEngineMap.executeScript("drawFlatMarker=true;");
+            webEngineMap.executeScript("drawReferenceCity=false;");
+            webEngineMap.executeScript("yourFlatLat=" + HousePriceCalc.pricesCalculator.getSelectedAddress().getLatitude() + ";");
+            webEngineMap.executeScript("yourFlatLng=" + HousePriceCalc.pricesCalculator.getSelectedAddress().getLongitude() + ";");
+            webEngineMap.executeScript("initMap();");
+        }
     }
 
     @FXML
