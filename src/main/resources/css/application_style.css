@@ -1,0 +1,20 @@
+.welcomeBannerThemeContainer {
+    -fx-background-image: url("../image/app_theme.jpg");
+    -fx-border-image-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.progressBarAppLoading {
+    -fx-accent: #1b9834;
+}
+
+.appThemeContainer {
+    -fx-background-image: url("../image/app_theme.jpg");
+    -fx-border-image-repeat: no-repeat;
+    -fx-background-position: 0px 450px;
+    -fx-background-size: 1920px 1000px;
+}
+
+.textAreaSelectedAlreadySentWishText .text {
+    -fx-text-alignment: center;
+}
