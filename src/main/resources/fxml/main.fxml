@@ -16,470 +16,495 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="950.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.controller.MainController">
-    <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0" style="-fx-background-color: grey; -fx-border-width: 1; -fx-border-color: #000;" styleClass="appThemeContainer" stylesheets="@../css/application_style.css">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="950.0"
+      prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.162" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="javafx.controller.MainController">
+    <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0"
+          style="-fx-background-color: grey; -fx-border-width: 1; -fx-border-color: #000;"
+          styleClass="appThemeContainer" stylesheets="@../css/application_style.css">
         <VBox.margin>
-            <Insets left="10.0" right="10.0" top="10.0" />
+            <Insets left="10.0" right="10.0" top="10.0"/>
         </VBox.margin>
-        <ImageView fitHeight="112.0" fitWidth="308.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 15, 0.73, 0, 0);">
+        <ImageView fitHeight="112.0" fitWidth="308.0" pickOnBounds="true" preserveRatio="true"
+                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 15, 0.73, 0, 0);">
             <HBox.margin>
-                <Insets bottom="5.0" top="12.0" />
+                <Insets bottom="5.0" top="12.0"/>
             </HBox.margin>
-            <Image url="@../image/logo.png" />
+            <Image url="@../image/logo.png"/>
         </ImageView>
     </HBox>
-    <HBox prefHeight="20.0" prefWidth="1600.0" style="-fx-background-color: #000; -fx-effect: dropshadow(three-pass-box,  grey, 15, 0.5, 0, 1);">
+    <HBox prefHeight="20.0" prefWidth="1600.0"
+          style="-fx-background-color: #000; -fx-effect: dropshadow(three-pass-box,  grey, 15, 0.5, 0, 1);">
         <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0"/>
         </VBox.margin>
-        <Label alignment="CENTER" prefHeight="17.0" prefWidth="100000.0" text="KALKULATOR CEN ZAKUPU MIESZKAŃ W POLSCE" textFill="WHITE">
+        <Label alignment="CENTER" prefHeight="17.0" prefWidth="100000.0" text="KALKULATOR CEN ZAKUPU MIESZKAŃ W POLSCE"
+               textFill="WHITE">
             <font>
-                <Font name="System Bold" size="13.0" />
+                <Font name="System Bold" size="13.0"/>
             </font>
             <HBox.margin>
-                <Insets bottom="2.0" top="2.0" />
+                <Insets bottom="2.0" top="2.0"/>
             </HBox.margin>
         </Label>
     </HBox>
     <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
         <VBox.margin>
-            <Insets bottom="13.0" />
+            <Insets bottom="13.0"/>
         </VBox.margin>
-        <Region minWidth="14.0" prefHeight="200.0" prefWidth="14.0" />
-        <VBox maxWidth="547.0" prefHeight="737.0" prefWidth="547.0" style="-fx-background-color: #000; -fx-effect: dropshadow(two-pass-box, #848484, 0, 0.5, -4, 5);" HBox.hgrow="ALWAYS">
+        <Region minWidth="14.0" prefHeight="200.0" prefWidth="14.0"/>
+        <VBox maxWidth="547.0" prefHeight="737.0" prefWidth="547.0"
+              style="-fx-background-color: #000; -fx-effect: dropshadow(two-pass-box, #848484, 0, 0.5, -4, 5);"
+              HBox.hgrow="ALWAYS">
             <HBox alignment="CENTER" style="-fx-background-color: grey;">
                 <VBox.margin>
-                    <Insets left="3.0" right="3.0" top="3.0" />
+                    <Insets left="3.0" right="3.0" top="3.0"/>
                 </VBox.margin>
                 <Label text="Kalkulator ceny" textFill="WHITE">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                 </Label>
             </HBox>
-            <HBox style="-fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 15, 0.0 , 0 , 2 );" VBox.vgrow="ALWAYS">
+            <HBox style="-fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 15, 0.0 , 0 , 2 );"
+                  VBox.vgrow="ALWAYS">
                 <VBox.margin>
-                    <Insets left="3.0" right="3.0" top="3.0" />
+                    <Insets left="3.0" right="3.0" top="3.0"/>
                 </VBox.margin>
-            <VBox alignment="CENTER" prefHeight="569.0" prefWidth="985.0" style="-fx-background-color: #2A2A2A; -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 15, 0.0 , 0 , 2 );">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <children>
-                  <HBox style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0.3, 0, 0);" VBox.vgrow="ALWAYS">
-                     <children>
+                <VBox alignment="CENTER" prefHeight="569.0" prefWidth="985.0"
+                      style="-fx-background-color: #2A2A2A; -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 15, 0.0 , 0 , 2 );">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                    </padding>
+                    <HBox style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0.3, 0, 0);"
+                          VBox.vgrow="ALWAYS">
                         <VBox alignment="CENTER" prefHeight="434.0" prefWidth="710.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label alignment="CENTER" prefHeight="17.0" prefWidth="1160.0" text="Uzupełnij dane dot. nieruchomości" textFill="WHITE" />
-                              <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                              <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
-                                 <children>
-                                    <Label minHeight="35.0" prefWidth="200.0" text="Wyszukaj adres:" textFill="WHITE" wrapText="true">
-                                       <HBox.margin>
-                                          <Insets top="13.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets top="18.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <TextField fx:id="textFieldAddress" prefHeight="26.0" prefWidth="483.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </VBox>
-                                    <Button maxHeight="46.0" minWidth="35.0" mnemonicParsing="false" onAction="#buttonAutocompleteAddresses" prefHeight="46.0" prefWidth="62.0" style="-fx-background-radius: 20;">
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="16.0" />
-                                       </HBox.margin>
-                                       <graphic>
-                                          <ImageView fitHeight="20.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../image/search_icon.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
-                                 <children>
-                                    <Label minHeight="35.0" prefWidth="200.0" text="Wybrany adres:" textFill="WHITE" wrapText="true">
-                                       <HBox.margin>
-                                          <Insets top="13.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets top="18.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <ComboBox fx:id="comboBoxAddress" onAction="#comboBoxAddress_onAction" prefHeight="26.0" prefWidth="528.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;" />
-                                          <Label fx:id="labelAddress" text="Wybierz adres." textFill="#0083f9" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="200.0" text="Rodzaj zabudowy:" textFill="WHITE">
-                                       <HBox.margin>
-                                          <Insets top="13.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets top="8.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <ComboBox fx:id="comboBoxBuildingType" prefHeight="25.0" prefWidth="300.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;" />
-                                          <Label fx:id="labelBuildingType" text="Wybierz rodzaj zabudowy." textFill="#0083f9" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="200.0" text="Rynek:" textFill="WHITE">
-                                       <HBox.margin>
-                                          <Insets top="13.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets top="8.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <ComboBox fx:id="comboBoxMarketType" prefHeight="25.0" prefWidth="300.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;" />
-                                          <Label fx:id="labelMarketType" text="Wybierz rynek." textFill="#0083f9" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="200.0" text="Rok budowy:" textFill="WHITE">
-                                       <HBox.margin>
-                                          <Insets top="13.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets top="8.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <TextField fx:id="textFieldConstructionYear" prefHeight="25.0" prefWidth="300.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;" />
-                                          <Label fx:id="labelConstructionYear" text="Podaj rok budowy." textFill="#0083f9" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="200.0" text="Ilość mkw:" textFill="WHITE">
-                                       <HBox.margin>
-                                          <Insets top="13.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets top="8.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <TextField fx:id="textFieldNumberOfMeters" prefHeight="25.0" prefWidth="300.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;" />
-                                          <Label fx:id="labelNumberOfMeters" text="Podaj ilość metrów kw." textFill="#0083f9" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
-                                 <children>
-                                    <Label prefHeight="17.0" prefWidth="200.0" text="Materiał budynku:" textFill="WHITE">
-                                       <HBox.margin>
-                                          <Insets top="13.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <VBox>
-                                       <HBox.margin>
-                                          <Insets top="8.0" />
-                                       </HBox.margin>
-                                       <children>
-                                          <ComboBox fx:id="comboBoxBuildingMaterial" prefHeight="25.0" prefWidth="300.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;" />
-                                          <Label fx:id="labelBuildingMaterial" text="Wybierz materiał budynku." textFill="#0083f9" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <Label alignment="CENTER" prefHeight="16.0" prefWidth="1000.0" text="Dodatkowe:" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <HBox alignment="CENTER">
-                                 <children>
-                                    <VBox>
-                                       <children>
-                                          <CheckBox fx:id="checkBoxBalcony" mnemonicParsing="false" prefWidth="200.0" text="balkon" textFill="WHITE" />
-                                          <CheckBox fx:id="checkBoxCellar" mnemonicParsing="false" prefWidth="200.0" text="piwnica" textFill="WHITE">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </CheckBox>
-                                          <CheckBox fx:id="checkBoxGarden" mnemonicParsing="false" prefWidth="200.0" text="ogródek" textFill="WHITE">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </CheckBox>
-                                          <CheckBox fx:id="checkBoxTerrace" mnemonicParsing="false" prefWidth="200.0" text="taras" textFill="WHITE">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </CheckBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox alignment="BOTTOM_CENTER">
-                                       <children>
-                                          <CheckBox fx:id="checkBoxElevator" mnemonicParsing="false" prefWidth="150.0" text="winda" textFill="WHITE" />
-                                          <CheckBox fx:id="checkBoxSeparateKitchen" mnemonicParsing="false" prefHeight="18.0" prefWidth="150.0" text="oddzielna kuchnia" textFill="WHITE">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </CheckBox>
-                                          <CheckBox fx:id="checkBoxGuardedEstate" mnemonicParsing="false" prefWidth="150.0" text="strzeżone osiedle" textFill="WHITE">
-                                             <VBox.margin>
-                                                <Insets top="5.0" />
-                                             </VBox.margin>
-                                          </CheckBox>
-                                       </children>
-                                    </VBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="10.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <Region prefHeight="200.0" prefWidth="200.0" />
-                           </children>
-                           <padding>
-                              <Insets left="10.0" right="10.0" />
-                           </padding>
+                            <padding>
+                                <Insets left="10.0" right="10.0"/>
+                            </padding>
+                            <Label alignment="CENTER" prefHeight="17.0" prefWidth="1160.0"
+                                   text="Uzupełnij dane dot. nieruchomości" textFill="WHITE"/>
+                            <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+                            <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
+                                <Label minHeight="35.0" prefWidth="200.0" text="Wyszukaj adres:" textFill="WHITE"
+                                       wrapText="true">
+                                    <HBox.margin>
+                                        <Insets top="13.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <VBox>
+                                    <HBox.margin>
+                                        <Insets top="18.0"/>
+                                    </HBox.margin>
+                                    <TextField fx:id="textFieldAddress" prefHeight="26.0" prefWidth="483.0"
+                                               style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;">
+                                        <VBox.margin>
+                                            <Insets/>
+                                        </VBox.margin>
+                                    </TextField>
+                                </VBox>
+                                <Button maxHeight="46.0" minWidth="35.0" mnemonicParsing="false"
+                                        onAction="#buttonAutocompleteAddresses" prefHeight="46.0" prefWidth="62.0"
+                                        style="-fx-background-radius: 20;">
+                                    <HBox.margin>
+                                        <Insets left="10.0" top="16.0"/>
+                                    </HBox.margin>
+                                    <graphic>
+                                        <ImageView fitHeight="20.0" fitWidth="21.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <Image url="@../image/search_icon.png"/>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
+                                <Label minHeight="35.0" prefWidth="200.0" text="Wybrany adres:" textFill="WHITE"
+                                       wrapText="true">
+                                    <HBox.margin>
+                                        <Insets top="13.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <VBox>
+                                    <HBox.margin>
+                                        <Insets top="18.0"/>
+                                    </HBox.margin>
+                                    <ComboBox fx:id="comboBoxAddress" onAction="#comboBoxAddress_onAction"
+                                              prefHeight="26.0" prefWidth="528.0"
+                                              style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;"/>
+                                    <Label fx:id="labelAddress" text="Wybierz adres." textFill="#0083f9"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
+                                <Label prefHeight="17.0" prefWidth="200.0" text="Rodzaj zabudowy:" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets top="13.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <VBox>
+                                    <HBox.margin>
+                                        <Insets top="8.0"/>
+                                    </HBox.margin>
+                                    <ComboBox fx:id="comboBoxBuildingType" prefHeight="25.0" prefWidth="300.0"
+                                              style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;"/>
+                                    <Label fx:id="labelBuildingType" text="Wybierz rodzaj zabudowy."
+                                           textFill="#0083f9"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
+                                <Label prefHeight="17.0" prefWidth="200.0" text="Rynek:" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets top="13.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <VBox>
+                                    <HBox.margin>
+                                        <Insets top="8.0"/>
+                                    </HBox.margin>
+                                    <ComboBox fx:id="comboBoxMarketType" prefHeight="25.0" prefWidth="300.0"
+                                              style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;"/>
+                                    <Label fx:id="labelMarketType" text="Wybierz rynek." textFill="#0083f9"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
+                                <Label prefHeight="17.0" prefWidth="200.0" text="Rok budowy:" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets top="13.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <VBox>
+                                    <HBox.margin>
+                                        <Insets top="8.0"/>
+                                    </HBox.margin>
+                                    <TextField fx:id="textFieldConstructionYear" prefHeight="25.0"
+                                               prefWidth="300.0"
+                                               style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;"/>
+                                    <Label fx:id="labelConstructionYear" text="Podaj rok budowy."
+                                           textFill="#0083f9"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
+                                <Label prefHeight="17.0" prefWidth="200.0" text="Ilość mkw:" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets top="13.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <VBox>
+                                    <HBox.margin>
+                                        <Insets top="8.0"/>
+                                    </HBox.margin>
+                                    <TextField fx:id="textFieldNumberOfMeters" prefHeight="25.0" prefWidth="300.0"
+                                               style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;"/>
+                                    <Label fx:id="labelNumberOfMeters" text="Podaj ilość metrów kw."
+                                           textFill="#0083f9"/>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
+                                <Label prefHeight="17.0" prefWidth="200.0" text="Materiał budynku:" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets top="13.0"/>
+                                    </HBox.margin>
+                                </Label>
+                                <VBox>
+                                    <HBox.margin>
+                                        <Insets top="8.0"/>
+                                    </HBox.margin>
+                                    <ComboBox fx:id="comboBoxBuildingMaterial" prefHeight="25.0" prefWidth="300.0"
+                                              style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0); -fx-background-radius: 20;"/>
+                                    <Label fx:id="labelBuildingMaterial" text="Wybierz materiał budynku."
+                                           textFill="#0083f9"/>
+                                </VBox>
+                            </HBox>
+                            <Label alignment="CENTER" prefHeight="16.0" prefWidth="1000.0" text="Dodatkowe:"
+                                   textFill="WHITE">
+                                <VBox.margin>
+                                    <Insets top="20.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <HBox alignment="CENTER">
+                                <VBox.margin>
+                                    <Insets top="10.0"/>
+                                </VBox.margin>
+                                <VBox>
+                                    <CheckBox fx:id="checkBoxBalcony" mnemonicParsing="false" prefWidth="200.0"
+                                              text="balkon" textFill="WHITE"/>
+                                    <CheckBox fx:id="checkBoxCellar" mnemonicParsing="false" prefWidth="200.0"
+                                              text="piwnica" textFill="WHITE">
+                                        <VBox.margin>
+                                            <Insets top="5.0"/>
+                                        </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="checkBoxGarden" mnemonicParsing="false" prefWidth="200.0"
+                                              text="ogródek" textFill="WHITE">
+                                        <VBox.margin>
+                                            <Insets top="5.0"/>
+                                        </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="checkBoxTerrace" mnemonicParsing="false" prefWidth="200.0"
+                                              text="taras" textFill="WHITE">
+                                        <VBox.margin>
+                                            <Insets top="5.0"/>
+                                        </VBox.margin>
+                                    </CheckBox>
+                                </VBox>
+                                <VBox alignment="BOTTOM_CENTER">
+                                    <CheckBox fx:id="checkBoxElevator" mnemonicParsing="false" prefWidth="150.0"
+                                              text="winda" textFill="WHITE"/>
+                                    <CheckBox fx:id="checkBoxSeparateKitchen" mnemonicParsing="false"
+                                              prefHeight="18.0" prefWidth="150.0" text="oddzielna kuchnia"
+                                              textFill="WHITE">
+                                        <VBox.margin>
+                                            <Insets top="5.0"/>
+                                        </VBox.margin>
+                                    </CheckBox>
+                                    <CheckBox fx:id="checkBoxGuardedEstate" mnemonicParsing="false"
+                                              prefWidth="150.0" text="strzeżone osiedle" textFill="WHITE">
+                                        <VBox.margin>
+                                            <Insets top="5.0"/>
+                                        </VBox.margin>
+                                    </CheckBox>
+                                </VBox>
+                            </HBox>
+                            <Region prefHeight="200.0" prefWidth="200.0"/>
                         </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
+                    </HBox>
+                </VBox>
             </HBox>
             <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #000;">
                 <VBox alignment="CENTER" style="-fx-background-color: #545469;" VBox.vgrow="ALWAYS">
                     <padding>
-                        <Insets left="10.0" right="10.0" />
+                        <Insets left="10.0" right="10.0"/>
                     </padding>
                     <VBox.margin>
-                        <Insets bottom="3.0" left="3.0" right="3.0" />
+                        <Insets bottom="3.0" left="3.0" right="3.0"/>
                     </VBox.margin>
-               <HBox alignment="CENTER">
-                  <children>
-                          <Button minHeight="25.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonCalculate_onAction" prefHeight="25.0" style="-fx-background-color: #268798; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Oszacuj" textFill="WHITE">
-                              <font>
-                                  <Font name="System Bold" size="12.0" />
-                              </font>
-                              <cursor>
-                                  <Cursor fx:constant="HAND" />
-                              </cursor>
-                          </Button>
-                     <Button minHeight="25.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonReset_onAction" prefHeight="25.0" style="-fx-background-color: #268798; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Reset" textFill="WHITE">
-                        <font>
-                           <Font name="System Bold" size="12.0" />
-                        </font>
-                        <cursor>
-                           <Cursor fx:constant="HAND" />
-                        </cursor>
-                        <HBox.margin>
-                           <Insets left="20.0" />
-                        </HBox.margin>
-                     </Button>
-                  </children>
-               </HBox>
+                    <HBox alignment="CENTER">
+                        <Button minHeight="25.0" minWidth="100.0" mnemonicParsing="false"
+                                onAction="#buttonCalculate_onAction" prefHeight="25.0"
+                                style="-fx-background-color: #268798; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
+                                text="Oszacuj" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                        </Button>
+                        <Button minHeight="25.0" minWidth="100.0" mnemonicParsing="false"
+                                onAction="#buttonReset_onAction" prefHeight="25.0"
+                                style="-fx-background-color: #268798; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
+                                text="Reset" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="12.0"/>
+                            </font>
+                            <cursor>
+                                <Cursor fx:constant="HAND"/>
+                            </cursor>
+                            <HBox.margin>
+                                <Insets left="20.0"/>
+                            </HBox.margin>
+                        </Button>
+                    </HBox>
                 </VBox>
             </VBox>
         </VBox>
         <Separator orientation="VERTICAL" prefHeight="730.0" prefWidth="15.0" HBox.hgrow="ALWAYS">
             <HBox.margin>
-                <Insets left="1.5" />
+                <Insets left="1.5"/>
             </HBox.margin>
         </Separator>
         <VBox HBox.hgrow="ALWAYS">
-            <VBox prefHeight="854.0" prefWidth="460.0" style="-fx-background-color: #000; -fx-effect: dropshadow(two-pass-box, #848484, 0, 0.5, 4, 5);">
+            <VBox prefHeight="854.0" prefWidth="460.0"
+                  style="-fx-background-color: #000; -fx-effect: dropshadow(two-pass-box, #848484, 0, 0.5, 4, 5);">
                 <padding>
-                    <Insets bottom="10.0" />
+                    <Insets bottom="10.0"/>
                 </padding>
                 <HBox alignment="CENTER" style="-fx-background-color: grey;">
                     <VBox.margin>
-                        <Insets left="3.0" right="3.0" top="3.0" />
+                        <Insets left="3.0" right="3.0" top="3.0"/>
                     </VBox.margin>
                     <Label text="Najbliższe duże miasto odniesienia:" textFill="WHITE">
                         <font>
-                            <Font size="16.0" />
+                            <Font size="16.0"/>
                         </font>
                     </Label>
                 </HBox>
-            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #545469;">
-               <padding>
-                  <Insets bottom="10.0" top="5.0" />
-               </padding>
-               <children>
-                  <Label prefHeight="25.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);" text="Nazwa miasta:" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="labelReferenceCity" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;" text="Warszawa" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label prefHeight="25.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);" text="Średnia cena za mkw: " textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="labelReferenceCityPricePerMeter" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;" text="6762 zł" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets left="3.0" right="3.0" top="3.0" />
-               </VBox.margin>
-            </VBox>
-                <HBox style="-fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 15, 0.0 , 0 , 2 );" VBox.vgrow="ALWAYS">
+                <VBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #545469;">
+                    <padding>
+                        <Insets bottom="10.0" top="5.0"/>
+                    </padding>
                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="10.0" />
+                        <Insets left="3.0" right="3.0" top="3.0"/>
                     </VBox.margin>
-               <children>
-                  <VBox prefHeight="52.0" prefWidth="340.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <WebView fx:id="webViewGoogleMaps" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                     </children>
-                  </VBox>
-               </children>
+                    <Label prefHeight="25.0" prefWidth="2000.0"
+                           style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);"
+                           text="Nazwa miasta:" textFill="WHITE">
+                        <font>
+                            <Font size="16.0"/>
+                        </font>
+                        <VBox.margin>
+                            <Insets left="10.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <Label fx:id="labelReferenceCity" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0"
+                           style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;"
+                           text="Warszawa" textFill="WHITE">
+                        <font>
+                            <Font size="16.0"/>
+                        </font>
+                        <VBox.margin>
+                            <Insets left="10.0" right="10.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <Label prefHeight="25.0" prefWidth="2000.0"
+                           style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);"
+                           text="Średnia cena za mkw: " textFill="WHITE">
+                        <font>
+                            <Font size="16.0"/>
+                        </font>
+                        <VBox.margin>
+                            <Insets left="10.0" right="10.0"/>
+                        </VBox.margin>
+                    </Label>
+                    <Label fx:id="labelReferenceCityPricePerMeter" alignment="CENTER" prefHeight="27.0"
+                           prefWidth="2000.0"
+                           style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;"
+                           text="6762 zł" textFill="WHITE">
+                        <font>
+                            <Font size="16.0"/>
+                        </font>
+                        <VBox.margin>
+                            <Insets left="10.0" right="10.0"/>
+                        </VBox.margin>
+                    </Label>
+                </VBox>
+                <HBox style="-fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 15, 0.0 , 0 , 2 );"
+                      VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0"/>
+                    </VBox.margin>
+                    <VBox prefHeight="52.0" prefWidth="340.0" HBox.hgrow="ALWAYS">
+                        <WebView fx:id="webViewGoogleMaps" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+                    </VBox>
                 </HBox>
                 <HBox style="-fx-background-color: #000;">
                     <VBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="10.0"/>
                     </VBox.margin>
                     <padding>
-                        <Insets right="7.0" />
+                        <Insets right="7.0"/>
                     </padding>
-                    <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #000;" HBox.hgrow="ALWAYS">
+                    <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #000;"
+                          HBox.hgrow="ALWAYS">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                         <HBox alignment="CENTER" style="-fx-background-color: grey;">
                             <VBox.margin>
-                                <Insets bottom="3.0" top="3.0" />
+                                <Insets bottom="3.0" top="3.0"/>
                             </VBox.margin>
                             <Label text="Wynik:" textFill="WHITE">
                                 <font>
-                                    <Font size="16.0" />
+                                    <Font size="16.0"/>
                                 </font>
                             </Label>
                         </HBox>
-                  <VBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #545469;">
-                     <padding>
-                        <Insets bottom="10.0" top="5.0" />
-                     </padding>
-                     <children>
-                        <Label prefHeight="25.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);" text="Odległość od centrum miasta odniesienia:" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="labelResultDistance" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;" text="42 km" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);" text="Cena za mkw (na podstawie odl. od miasta odniesienia):" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="labelResultBasicPricePerMeter" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;" text="5982 zł" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);" text="Cena mieszkania:" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="labelResultFinalPrice" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;" text="250212 zł" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label prefHeight="25.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);" text="Ostateczna cena za mkw:" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="labelResultFinalPricePerMeter" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;" text="6120 zł" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
+                        <VBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0"
+                              style="-fx-background-color: #545469;">
+                            <padding>
+                                <Insets bottom="10.0" top="5.0"/>
+                            </padding>
+                            <Label prefHeight="25.0" prefWidth="2000.0"
+                                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);"
+                                   text="Odległość od centrum miasta odniesienia:" textFill="WHITE">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets left="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <Label fx:id="labelResultDistance" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0"
+                                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;"
+                                   text="42 km" textFill="WHITE">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <Label prefHeight="25.0" prefWidth="2000.0"
+                                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);"
+                                   text="Cena za mkw (na podstawie odl. od miasta odniesienia):" textFill="WHITE">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <Label fx:id="labelResultBasicPricePerMeter" alignment="CENTER" prefHeight="27.0"
+                                   prefWidth="2000.0"
+                                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;"
+                                   text="5982 zł" textFill="WHITE">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <Label prefHeight="25.0" prefWidth="2000.0"
+                                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);"
+                                   text="Cena mieszkania:" textFill="WHITE">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <Label fx:id="labelResultFinalPrice" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0"
+                                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;"
+                                   text="250212 zł" textFill="WHITE">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <Label prefHeight="25.0" prefWidth="2000.0"
+                                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4);"
+                                   text="Ostateczna cena za mkw:" textFill="WHITE">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                            <Label fx:id="labelResultFinalPricePerMeter" alignment="CENTER" prefHeight="27.0"
+                                   prefWidth="2000.0"
+                                   style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;"
+                                   text="6120 zł" textFill="WHITE">
+                                <font>
+                                    <Font size="16.0"/>
+                                </font>
+                                <VBox.margin>
+                                    <Insets left="10.0" right="10.0"/>
+                                </VBox.margin>
+                            </Label>
+                        </VBox>
                     </VBox>
                     <Region minWidth="3.0">
                         <HBox.margin>
-                            <Insets />
+                            <Insets/>
                         </HBox.margin>
                     </Region>
                 </HBox>
             </VBox>
         </VBox>
-        <Region minWidth="14.0" prefHeight="200.0" prefWidth="14.0" />
+        <Region minWidth="14.0" prefHeight="200.0" prefWidth="14.0"/>
     </HBox>
 </VBox>
