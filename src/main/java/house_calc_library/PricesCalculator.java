@@ -99,52 +99,52 @@ public class PricesCalculator {
     }
 
     public CalculatorResult calculateHousePrice(String buildingType, String marketType, String buildingMaterial,
-                                    Integer constructionYear, Integer numberOfMeters, Boolean balcony, Boolean cellar,
-                                    Boolean garden, Boolean terrace, Boolean elevator, Boolean separateKitchen,
-                                    Boolean guardedEstate) throws ConstructionYearViolationException {
-        Double housePrice;
-        if (marketType.equals("pierwotny"))
-            housePrice=calculatorResult.getNearestReferenceCity().getPricePerMeterOnPrimaryMarket();
-        else
-            housePrice=calculatorResult.getNearestReferenceCity().getPricePerMeterOnAftermarket();
-
+                                                Integer constructionYear, Integer numberOfMeters, Boolean balcony, Boolean cellar,
+                                                Boolean garden, Boolean terrace, Boolean elevator, Boolean separateKitchen,
+                                                Boolean guardedEstate) throws ConstructionYearViolationException {
         Double meterPriceMultiplier = 1.0;
         meterPriceMultiplier *= calculateMultiplierForConstructionYear(constructionYear);
 
-        calculatorResult.setBasicPricePerMeter(meterPriceMultiplier*housePrice);
+        Double housePrice;
+        if (marketType.equals("pierwotny"))
+            housePrice = calculatorResult.getNearestReferenceCity().getPricePerMeterOnPrimaryMarket();
+        else
+            housePrice = calculatorResult.getNearestReferenceCity().getPricePerMeterOnAftermarket();
+
+        calculatorResult.setBasicPricePerMeter(meterPriceMultiplier * housePrice);
 
         meterPriceMultiplier *= buildingTypes.get(buildingType);
         meterPriceMultiplier *= buildingMaterials.get(buildingMaterial);
         meterPriceMultiplier *= calculateMultiplierForDistanceToNearestReferenceCity(calculateTheNearestReferenceCity());
 
-        housePrice*=meterPriceMultiplier;
-        housePrice*=numberOfMeters;
+        housePrice *= meterPriceMultiplier;
+        housePrice *= numberOfMeters;
 
         if (balcony)
-            housePrice+=additionalAttributes.get("balkon");
+            housePrice += additionalAttributes.get("balkon");
 
         if (cellar)
-            housePrice+=additionalAttributes.get("piwnica");
+            housePrice += additionalAttributes.get("piwnica");
 
         if (garden)
-            housePrice+=additionalAttributes.get("ogródek");
+            housePrice += additionalAttributes.get("ogródek");
 
         if (terrace)
-            housePrice+=additionalAttributes.get("taras");
+            housePrice += additionalAttributes.get("taras");
 
         if (elevator)
-            housePrice+=additionalAttributes.get("winda");
+            housePrice += additionalAttributes.get("winda");
 
         if (separateKitchen)
-            housePrice+=additionalAttributes.get("oddzielna kuchnia");
+            housePrice += additionalAttributes.get("oddzielna kuchnia");
 
         if (guardedEstate)
-            housePrice+=additionalAttributes.get("strzeżone osiedle");
+            housePrice += additionalAttributes.get("strzeżone osiedle");
 
         calculatorResult.setHousePrice(housePrice);
-        calculatorResult.setFinalPricePerMeter(housePrice/Double.valueOf(numberOfMeters));
+        calculatorResult.setFinalPricePerMeter(housePrice / Double.valueOf(numberOfMeters));
 
-        return  calculatorResult;
+        return calculatorResult;
     }
 
     private Double calculateMultiplierForDistanceToNearestReferenceCity(Double distance) {
