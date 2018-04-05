@@ -17,6 +17,7 @@ import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -101,7 +102,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void buttonReset_onAction(){
+    void buttonReset_onAction() {
         resetComponentsValues();
         webEngineMap.executeScript("drawFlatMarker=false;");
         webEngineMap.executeScript("drawReferenceCity=false;");
@@ -115,13 +116,30 @@ public class MainController implements Initializable {
                 labelNumberOfMeters.getText().isEmpty() && labelBuildingMaterial.getText().isEmpty()) {
 
             try {
-                HousePriceCalc.pricesCalculator.calculateMultiplierForConstructionYear(Integer.valueOf(textFieldConstructionYear.getText()));
-                HousePriceCalc.pricesCalculator.calculateTheNearestReferenceCity();
+                CalculatorResult calculatorResult
+                        = HousePriceCalc.pricesCalculator.calculateHousePrice(comboBoxBuildingType.getSelectionModel()
+                                .getSelectedItem(), comboBoxMarketType.getSelectionModel().getSelectedItem(),
+                        comboBoxBuildingMaterial.getSelectionModel().getSelectedItem(),
+                        Integer.valueOf(textFieldConstructionYear.getText()),
+                        Integer.valueOf(textFieldNumberOfMeters.getText()), checkBoxBalcony.isSelected(),
+                        checkBoxCellar.isSelected(), checkBoxGarden.isSelected(), checkBoxTerrace.isSelected(),
+                        checkBoxElevator.isSelected(), checkBoxSeparateKitchen.isSelected(),
+                        checkBoxGuardedEstate.isSelected());
 
-                CalculatorResult calculatorResult = HousePriceCalc.pricesCalculator.getCalculatorResult();
-
+                DecimalFormat decimalFormat = new DecimalFormat("##.##");
                 labelReferenceCity.setText(calculatorResult.getNearestReferenceCity().getName());
-                labelResultDistance.setText(String.valueOf(calculatorResult.getDistanceFromFlatToNearestReferenceCity() / 1000.0) + " km");
+                if (comboBoxMarketType.getSelectionModel().getSelectedItem().equals("pierwotny"))
+                    labelReferenceCityPricePerMeter.setText(String.valueOf(calculatorResult.getNearestReferenceCity()
+                            .getPricePerMeterOnPrimaryMarket()) + " zł");
+                else
+                    labelReferenceCityPricePerMeter.setText(String.valueOf(calculatorResult.getNearestReferenceCity()
+                            .getPricePerMeterOnAftermarket()) + " zł");
+                labelResultDistance.setText(String.valueOf(decimalFormat
+                        .format((calculatorResult.getDistanceFromFlatToNearestReferenceCity() / 1000.0))) + " km");
+
+                labelResultBasicPricePerMeter.setText(decimalFormat.format(calculatorResult.getBasicPricePerMeter()) + " zł");
+                labelResultFinalPrice.setText(decimalFormat.format(calculatorResult.getHousePrice()) + " zł");
+                labelResultFinalPricePerMeter.setText(decimalFormat.format(calculatorResult.getFinalPricePerMeter()) + " zł");
 
                 webEngineMap.executeScript("drawFlatMarker=true;");
                 webEngineMap.executeScript("drawReferenceCity=true;");
