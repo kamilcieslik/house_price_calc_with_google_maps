@@ -42,10 +42,6 @@
     var drawFlatMarker = false;
     var drawReferenceCity = false;
 
-    function sayHello() {
-        return 'Siema ';
-    }
-
     function initMap() {
         var initCoordinates = {lat: initLat, lng: initLng};
         var yourFlatCoordinates = {lat: yourFlatLat, lng: yourFlatLng};
@@ -63,9 +59,9 @@
                 map: map,
                 icon: {
                     url: 'image/icon.png',
-                    scaledSize: new google.maps.Size(75, 75), // scaled size
-                    origin: new google.maps.Point(0, 0), // origin
-                    anchor: new google.maps.Point(0, 0) // anchor
+                    scaledSize: new google.maps.Size(75, 75),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 0)
                 },
                 title: {
                     text: 'TWOJE MIESZKANIE',

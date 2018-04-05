@@ -201,11 +201,6 @@ public class MainController implements Initializable {
         }
     }
 
-    @FXML
-    void menuItemModifyGoogleApiKey_onAction() {
-
-    }
-
     private void resetComponentsValues() {
         textFieldAddress.setText("");
         if (addressesObservableList != null)
