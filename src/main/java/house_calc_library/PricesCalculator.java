@@ -102,22 +102,21 @@ public class PricesCalculator {
                                                 Integer constructionYear, Integer numberOfMeters, Boolean balcony, Boolean cellar,
                                                 Boolean garden, Boolean terrace, Boolean elevator, Boolean separateKitchen,
                                                 Boolean guardedEstate) throws ConstructionYearViolationException {
+        Double meterPriceMultiplier = 1.0;
+        meterPriceMultiplier *= calculateMultiplierForConstructionYear(constructionYear);
+        Double multiplierForDistanceToNearestReferenceCity = calculateMultiplierForDistanceToNearestReferenceCity(calculateTheNearestReferenceCity());
+
         Double housePrice;
         if (marketType.equals("pierwotny"))
             housePrice = calculatorResult.getNearestReferenceCity().getPricePerMeterOnPrimaryMarket();
         else
             housePrice = calculatorResult.getNearestReferenceCity().getPricePerMeterOnAftermarket();
 
-        Double meterPriceMultiplier = 1.0;
-        meterPriceMultiplier *= calculateMultiplierForConstructionYear(constructionYear);
-        Double multiplierForDistanceToNearestReferenceCity = calculateMultiplierForDistanceToNearestReferenceCity(calculateTheNearestReferenceCity());
-
         calculatorResult.setBasicPricePerMeter(meterPriceMultiplier * housePrice);
 
         meterPriceMultiplier *= multiplierForDistanceToNearestReferenceCity;
         meterPriceMultiplier *= buildingTypes.get(buildingType);
         meterPriceMultiplier *= buildingMaterials.get(buildingMaterial);
-
 
         housePrice *= meterPriceMultiplier;
         housePrice *= numberOfMeters;
