@@ -13,19 +13,43 @@ public class ReferenceCity {
         this.longitude = longitude;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Double getPricePerMeterOnPrimaryMarket() {
         return pricePerMeterOnPrimaryMarket;
+    }
+
+    public void setPricePerMeterOnPrimaryMarket(Double pricePerMeterOnPrimaryMarket) {
+        this.pricePerMeterOnPrimaryMarket = pricePerMeterOnPrimaryMarket;
     }
 
     public Double getPricePerMeterOnAftermarket() {
         return pricePerMeterOnAftermarket;
     }
 
+    public void setPricePerMeterOnAftermarket(Double pricePerMeterOnAftermarket) {
+        this.pricePerMeterOnAftermarket = pricePerMeterOnAftermarket;
+    }
+
     public String getLatitude() {
         return latitude;
     }
 
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
     public String getLongitude() {
         return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }
