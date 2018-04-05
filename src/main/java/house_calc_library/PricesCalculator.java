@@ -1,6 +1,7 @@
 package house_calc_library;
 
 import house_calc_library.additional_classes.Address;
+import house_calc_library.additional_classes.CalculatorResult;
 import house_calc_library.additional_classes.ReferenceCity;
 import house_calc_library.exception.ConstructionYearViolationException;
 import com.google.maps.GeoApiContext;
@@ -10,16 +11,18 @@ import com.google.maps.model.GeocodingResult;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class PricesCalculator {
     private GeoApiContext geoApiContext;
-    private List<ReferenceCity> referenceCitiesMap;
+    private List<ReferenceCity> referenceCities;
     private List<Address> autocompleteAddresses;
     private Address selectedAddress;
     private Map<String, Double> buildingTypes;
     private List<String> marketTypes;
     private Map<String, Double> buildingMaterials;
     private Map<String, Double> additionalAttributes;
+    private CalculatorResult calculatorResult;
 
     public PricesCalculator(String googleApiKey) {
         initReferenceCities();
@@ -96,13 +99,38 @@ public class PricesCalculator {
         }
     }
 
-    public Double calculateHousePrice(){
+    public Double calculateHousePrice() {
         // TODO:
         return null;
     }
 
     public void calculateTheNearestReferenceCity() {
-        // TODO: Calculate distances between flat address and reference cities.
+        Map<ReferenceCity, Double> distancesFromFlatToReferenceCities = new HashMap<>();
+        final int EARTH_RADIUS = 6371;
+        referenceCities.forEach(city -> {
+            Double latDistance =
+                    Math.toRadians(Double.valueOf(city.getLatitude()) - Double.valueOf(selectedAddress.getLatitude()));
+            Double lonDistance =
+                    Math.toRadians(Double.valueOf(city.getLongitude()) - Double.valueOf(selectedAddress.getLongitude()));
+            Double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                    + Math.cos(Math.toRadians(Double.valueOf(selectedAddress.getLatitude())))
+                    * Math.cos(Math.toRadians(Double.valueOf(city.getLatitude())))
+                    * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+            Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            Double distanceInMeters = EARTH_RADIUS * c * 1000;
+
+            distancesFromFlatToReferenceCities.put(city, distanceInMeters);
+        });
+
+        Map.Entry<ReferenceCity, Double> min = null;
+        for (Map.Entry<ReferenceCity, Double> entry : distancesFromFlatToReferenceCities.entrySet()) {
+            if (min == null || min.getValue() > entry.getValue()) {
+                min = entry;
+            }
+        }
+
+        assert min != null;
+        calculatorResult = new CalculatorResult(min.getKey(), min.getValue());
     }
 
     public Double calculateMultiplierForConstructionYear(Integer constructionYear) throws ConstructionYearViolationException {
@@ -129,34 +157,34 @@ public class PricesCalculator {
     }
 
     private void initReferenceCities() {
-        if (referenceCitiesMap == null)
-            referenceCitiesMap = new ArrayList<>();
+        if (referenceCities == null)
+            referenceCities = new ArrayList<>();
 
-        referenceCitiesMap.add(new ReferenceCity("Gdańsk", 6596.0,
+        referenceCities.add(new ReferenceCity("Gdańsk", 6596.0,
                 8082.0, "54.372158", "18.638306"));
 
-        referenceCitiesMap.add(new ReferenceCity("Katowice", 5421.0,
+        referenceCities.add(new ReferenceCity("Katowice", 5421.0,
                 4664.0, "50.270908", "19.039993"));
 
-        referenceCitiesMap.add(new ReferenceCity("Kraków", 7401.0,
+        referenceCities.add(new ReferenceCity("Kraków", 7401.0,
                 8013.0, "50.049683", "19.944544"));
 
-        referenceCitiesMap.add(new ReferenceCity("Lublin", 5378.0,
+        referenceCities.add(new ReferenceCity("Lublin", 5378.0,
                 5254.0, "51.246452", "22.568445"));
 
-        referenceCitiesMap.add(new ReferenceCity("Łódź", 4814.0,
+        referenceCities.add(new ReferenceCity("Łódź", 4814.0,
                 4290.0, "51.759445", "19.457216"));
 
-        referenceCitiesMap.add(new ReferenceCity("Poznań", 6437.0,
+        referenceCities.add(new ReferenceCity("Poznań", 6437.0,
                 6344.0, "52.409538", "16.931992"));
 
-        referenceCitiesMap.add(new ReferenceCity("Szczecin", 5102.0,
+        referenceCities.add(new ReferenceCity("Szczecin", 5102.0,
                 4691.0, "53.428543", "14.552812"));
 
-        referenceCitiesMap.add(new ReferenceCity("Warszawa", 8080.0,
+        referenceCities.add(new ReferenceCity("Warszawa", 8080.0,
                 9457.0, "52.237049", "21.017532"));
 
-        referenceCitiesMap.add(new ReferenceCity("Wrocław", 6297.0,
+        referenceCities.add(new ReferenceCity("Wrocław", 6297.0,
                 6495.0, "51.107883", "17.038538"));
     }
 
@@ -210,12 +238,12 @@ public class PricesCalculator {
         this.geoApiContext = geoApiContext;
     }
 
-    public List<ReferenceCity> getReferenceCitiesMap() {
-        return referenceCitiesMap;
+    public List<ReferenceCity> getReferenceCities() {
+        return referenceCities;
     }
 
-    public void setReferenceCitiesMap(List<ReferenceCity> referenceCitiesMap) {
-        this.referenceCitiesMap = referenceCitiesMap;
+    public void setReferenceCities(List<ReferenceCity> referenceCities) {
+        this.referenceCities = referenceCities;
     }
 
     public List<Address> getAutocompleteAddresses() {
@@ -264,5 +292,13 @@ public class PricesCalculator {
 
     public void setAdditionalAttributes(Map<String, Double> additionalAttributes) {
         this.additionalAttributes = additionalAttributes;
+    }
+
+    public CalculatorResult getCalculatorResult() {
+        return calculatorResult;
+    }
+
+    public void setCalculatorResult(CalculatorResult calculatorResult) {
+        this.calculatorResult = calculatorResult;
     }
 }
