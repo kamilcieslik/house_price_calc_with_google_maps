@@ -19,10 +19,6 @@ public class HousePriceCalc extends Application {
     public static PricesCalculator pricesCalculator;
     private static Stage mainStage;
 
-    public static Stage getMainStage() {
-        return mainStage;
-    }
-
     public static void setMainStage(Stage mainStage) {
         HousePriceCalc.mainStage = mainStage;
     }
