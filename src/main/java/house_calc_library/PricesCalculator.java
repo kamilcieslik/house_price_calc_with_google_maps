@@ -1,17 +1,16 @@
 package house_calc_library;
 
-import house_calc_library.additional_classes.Address;
-import house_calc_library.additional_classes.CalculatorResult;
-import house_calc_library.additional_classes.ReferenceCity;
-import house_calc_library.exception.ConstructionYearViolationException;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
+import house_calc_library.additional_classes.Address;
+import house_calc_library.additional_classes.CalculatorResult;
+import house_calc_library.additional_classes.ReferenceCity;
+import house_calc_library.exception.ConstructionYearViolationException;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class PricesCalculator {
     private GeoApiContext geoApiContext;
@@ -99,12 +98,79 @@ public class PricesCalculator {
         }
     }
 
-    public Double calculateHousePrice() {
-        // TODO:
-        return null;
+    public CalculatorResult calculateHousePrice(String buildingType, String marketType, String buildingMaterial,
+                                    Integer constructionYear, Integer numberOfMeters, Boolean balcony, Boolean cellar,
+                                    Boolean garden, Boolean terrace, Boolean elevator, Boolean separateKitchen,
+                                    Boolean guardedEstate) throws ConstructionYearViolationException {
+        Double housePrice;
+        if (marketType.equals("pierwotny"))
+            housePrice=calculatorResult.getNearestReferenceCity().getPricePerMeterOnPrimaryMarket();
+        else
+            housePrice=calculatorResult.getNearestReferenceCity().getPricePerMeterOnAftermarket();
+
+        Double meterPriceMultiplier = 1.0;
+        meterPriceMultiplier *= calculateMultiplierForConstructionYear(constructionYear);
+
+        calculatorResult.setBasicPricePerMeter(meterPriceMultiplier*housePrice);
+
+        meterPriceMultiplier *= buildingTypes.get(buildingType);
+        meterPriceMultiplier *= buildingMaterials.get(buildingMaterial);
+        meterPriceMultiplier *= calculateMultiplierForDistanceToNearestReferenceCity(calculateTheNearestReferenceCity());
+
+        housePrice*=meterPriceMultiplier;
+        housePrice*=numberOfMeters;
+
+        if (balcony)
+            housePrice+=additionalAttributes.get("balkon");
+
+        if (cellar)
+            housePrice+=additionalAttributes.get("piwnica");
+
+        if (garden)
+            housePrice+=additionalAttributes.get("ogródek");
+
+        if (terrace)
+            housePrice+=additionalAttributes.get("taras");
+
+        if (elevator)
+            housePrice+=additionalAttributes.get("winda");
+
+        if (separateKitchen)
+            housePrice+=additionalAttributes.get("oddzielna kuchnia");
+
+        if (guardedEstate)
+            housePrice+=additionalAttributes.get("strzeżone osiedle");
+
+        calculatorResult.setHousePrice(housePrice);
+        calculatorResult.setFinalPricePerMeter(housePrice/Double.valueOf(numberOfMeters));
+
+        return  calculatorResult;
     }
 
-    public void calculateTheNearestReferenceCity() {
+    private Double calculateMultiplierForDistanceToNearestReferenceCity(Double distance) {
+        if (distance < 1000)
+            return 1.1;
+        else if (distance < 4000)
+            return 1.0;
+        else if (distance < 10000)
+            return 0.95;
+        else if (distance < 20000)
+            return 0.90;
+        else if (distance < 35000)
+            return 0.85;
+        else if (distance < 47000)
+            return 0.80;
+        else if (distance < 60000)
+            return 0.77;
+        else if (distance < 75000)
+            return 0.74;
+        else if (distance < 90000)
+            return 0.72;
+        else
+            return 0.65;
+    }
+
+    private Double calculateTheNearestReferenceCity() {
         Map<ReferenceCity, Double> distancesFromFlatToReferenceCities = new HashMap<>();
         final int EARTH_RADIUS = 6371;
         referenceCities.forEach(city -> {
@@ -131,9 +197,11 @@ public class PricesCalculator {
 
         assert min != null;
         calculatorResult = new CalculatorResult(min.getKey(), min.getValue());
+
+        return min.getValue();
     }
 
-    public Double calculateMultiplierForConstructionYear(Integer constructionYear) throws ConstructionYearViolationException {
+    private Double calculateMultiplierForConstructionYear(Integer constructionYear) throws ConstructionYearViolationException {
         Calendar calendarDateNow = Calendar.getInstance();
         int dateNowYear = calendarDateNow.get(Calendar.YEAR);
         if (constructionYear > dateNowYear) {
