@@ -37,7 +37,7 @@ dodatkowych (balkon, ogródek, winda, strzeżone osiedle itp.)
 2. Ekran główny #1.
 </p>
 <p align="center">
-<img height="1000" width="1628" src="https://image.ibb.co/mLZ7Rc/2.png" />
+<img height="549" width="1373" src="https://image.ibb.co/mLZ7Rc/2.png" />
 </p>
 <p align="center">
 
@@ -45,7 +45,7 @@ dodatkowych (balkon, ogródek, winda, strzeżone osiedle itp.)
 3. Ekran główny #2.
 </p>
 <p align="center">
-<img height="995" width="1616" src="https://image.ibb.co/kJ47Rc/3.png" />
+<img height="549" width="1373" src="https://image.ibb.co/kJ47Rc/3.png" />
 </p>
 <p align="center">
 
@@ -53,7 +53,7 @@ dodatkowych (balkon, ogródek, winda, strzeżone osiedle itp.)
 4. Ekran główny #3.
 </p>
 <p align="center">
-<img height="1006" width="1635" src="https://image.ibb.co/c9odXH/4.png" />
+<img height="549" width="1373" src="https://image.ibb.co/c9odXH/4.png" />
 </p>
 <p align="center">
 
