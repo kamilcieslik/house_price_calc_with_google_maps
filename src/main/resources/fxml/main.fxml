@@ -70,7 +70,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="434.0" prefWidth="710.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label fx:id="labelEnterYourData" alignment="CENTER" prefHeight="17.0" prefWidth="1160.0" text="Uzupełnij dane dot. nieruchomości" textFill="WHITE" />
+                              <Label alignment="CENTER" prefHeight="17.0" prefWidth="1160.0" text="Uzupełnij dane dot. nieruchomości" textFill="WHITE" />
                               <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                               <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="254.0">
                                  <children>
@@ -279,17 +279,29 @@
                     <VBox.margin>
                         <Insets bottom="3.0" left="3.0" right="3.0" />
                     </VBox.margin>
-                    <Button minHeight="25.0" minWidth="90.0" mnemonicParsing="false" onAction="#buttonCalculate" prefHeight="25.0" prefWidth="173.0" style="-fx-background-color: #268798; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Oszacuj" textFill="WHITE">
+               <HBox alignment="CENTER">
+                  <children>
+                          <Button minHeight="25.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonCalculate_onAction" prefHeight="25.0" style="-fx-background-color: #268798; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Oszacuj" textFill="WHITE">
+                              <font>
+                                  <Font name="System Bold" size="12.0" />
+                              </font>
+                              <cursor>
+                                  <Cursor fx:constant="HAND" />
+                              </cursor>
+                          </Button>
+                     <Button minHeight="25.0" minWidth="100.0" mnemonicParsing="false" onAction="#buttonReset_onAction" prefHeight="25.0" style="-fx-background-color: #268798; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Reset" textFill="WHITE">
                         <font>
-                            <Font name="System Bold" size="12.0" />
+                           <Font name="System Bold" size="12.0" />
                         </font>
                         <cursor>
-                            <Cursor fx:constant="HAND" />
+                           <Cursor fx:constant="HAND" />
                         </cursor>
-                        <VBox.margin>
-                            <Insets bottom="10.0" top="10.0" />
-                        </VBox.margin>
-                    </Button>
+                        <HBox.margin>
+                           <Insets left="20.0" />
+                        </HBox.margin>
+                     </Button>
+                  </children>
+               </HBox>
                 </VBox>
             </VBox>
         </VBox>
@@ -433,7 +445,7 @@
                               <Insets left="10.0" right="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="labelResulFinalPrice" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;" text="250212 zł" textFill="WHITE">
+                        <Label fx:id="labelResultFinalPrice" alignment="CENTER" prefHeight="27.0" prefWidth="2000.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 4, 4); -fx-border-color: black;" text="250212 zł" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>

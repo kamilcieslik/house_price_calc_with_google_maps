@@ -2,6 +2,7 @@ package javafx.controller;
 
 import app.HousePriceCalc;
 import house_calc_library.additional_classes.Address;
+import house_calc_library.additional_classes.CalculatorResult;
 import house_calc_library.exception.ConstructionYearViolationException;
 import com.google.maps.errors.ApiException;
 import javafx.CustomMessageBox;
@@ -22,14 +23,13 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     private WebEngine webEngineMap;
-    private ObservableList<Address> addressesObservableList = FXCollections.observableArrayList();
     private CustomMessageBox customMessageBox;
+    private ObservableList<Address> addressesObservableList = FXCollections.observableArrayList();
 
     @FXML
-    private Label labelEnterYourData, labelAddress, labelPropertyType, labelMarketType, labelConstructionYear,
-            labelNumberOfMeters, labelBuildingType, labelBuildingMaterial, labelResultDistance,
-            labelResultBasicPricePerMeter, labelResulFinalPrice, labelResultFinalPricePerMeter, labelReferenceCity,
-            labelReferenceCityPricePerMeter;
+    private Label labelAddress, labelMarketType, labelConstructionYear, labelNumberOfMeters, labelBuildingType,
+            labelBuildingMaterial, labelResultDistance, labelResultBasicPricePerMeter, labelResultFinalPrice,
+            labelResultFinalPricePerMeter, labelReferenceCity, labelReferenceCityPricePerMeter;
 
     @FXML
     private TextField textFieldAddress, textFieldConstructionYear, textFieldNumberOfMeters;
@@ -60,7 +60,7 @@ public class MainController implements Initializable {
                         "Podaj rok budowy.", "Niepoprawny format."));
 
         textFieldNumberOfMeters.textProperty().addListener((observable, oldValue, newValue) -> listenerMethods
-                .changeLabelTextField("^[1-9]{1}[0-9]{2}$", textFieldNumberOfMeters, labelNumberOfMeters,
+                .changeLabelTextField("^[1-9]{1}[0-9]{1,2}$", textFieldNumberOfMeters, labelNumberOfMeters,
                         "Podaj ilość metrów kw.", "Niepoprawny format."));
 
         comboBoxAddress.valueProperty().addListener((observable, oldValue, newValue) -> listenerMethods
@@ -101,22 +101,35 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void buttonCalculate() {
-        /*
-        webEngineMap.executeScript("clearComponents=true;");
+    void buttonReset_onAction(){
+        resetComponentsValues();
+        webEngineMap.executeScript("drawFlatMarker=false;");
+        webEngineMap.executeScript("drawReferenceCity=false;");
         webEngineMap.executeScript("initMap();");
-        */
+    }
 
-        /*
-        HousePriceCalc.pricesCalculator.autocompleteAddresses(textFieldAddress.getText());
-        System.out.println(HousePriceCalc.pricesCalculator.getAutocompleteAddresses()); */
-
+    @FXML
+    void buttonCalculate_onAction() {
         if (labelAddress.getText().isEmpty() && labelBuildingType.getText().isEmpty()
                 && labelMarketType.getText().isEmpty() && labelConstructionYear.getText().isEmpty() &&
                 labelNumberOfMeters.getText().isEmpty() && labelBuildingMaterial.getText().isEmpty()) {
 
             try {
                 HousePriceCalc.pricesCalculator.calculateMultiplierForConstructionYear(Integer.valueOf(textFieldConstructionYear.getText()));
+                HousePriceCalc.pricesCalculator.calculateTheNearestReferenceCity();
+
+                CalculatorResult calculatorResult = HousePriceCalc.pricesCalculator.getCalculatorResult();
+
+                labelReferenceCity.setText(calculatorResult.getNearestReferenceCity().getName());
+                labelResultDistance.setText(String.valueOf(calculatorResult.getDistanceFromFlatToNearestReferenceCity() / 1000.0) + " km");
+
+                webEngineMap.executeScript("drawFlatMarker=true;");
+                webEngineMap.executeScript("drawReferenceCity=true;");
+                webEngineMap.executeScript("yourFlatLat=" + HousePriceCalc.pricesCalculator.getSelectedAddress().getLatitude() + ";");
+                webEngineMap.executeScript("yourFlatLng=" + HousePriceCalc.pricesCalculator.getSelectedAddress().getLongitude() + ";");
+                webEngineMap.executeScript("referenceCityLat=" + calculatorResult.getNearestReferenceCity().getLatitude() + ";");
+                webEngineMap.executeScript("referenceCityLng=" + calculatorResult.getNearestReferenceCity().getLongitude() + ";");
+                webEngineMap.executeScript("initMap();");
             } catch (ConstructionYearViolationException e) {
                 customMessageBox.showMessageBox(Alert.AlertType.WARNING, "Ostrzeżenie",
                         "Operacja oszacowania wartości nie powiedzie się.",
@@ -140,6 +153,7 @@ public class MainController implements Initializable {
                 addressesObservableList.addAll(autocompleteAddresses);
                 webEngineMap.executeScript("drawFlatMarker=false;");
                 webEngineMap.executeScript("drawReferenceCity=false;");
+                webEngineMap.executeScript("initMap();");
             }
 
         } catch (InterruptedException | ApiException | IOException e) {
@@ -197,7 +211,7 @@ public class MainController implements Initializable {
         labelReferenceCityPricePerMeter.setText("------");
         labelResultDistance.setText("------");
         labelResultBasicPricePerMeter.setText("------");
-        labelResulFinalPrice.setText("------");
+        labelResultFinalPrice.setText("------");
         labelResultFinalPricePerMeter.setText("------");
     }
 }
